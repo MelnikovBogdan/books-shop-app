@@ -73,6 +73,36 @@ export class AuthService {
     });
   }
 
+  async refresh(user: User, response: Response) {
+    const expiresAccessToken = new Date();
+    expiresAccessToken.setMilliseconds(
+      expiresAccessToken.getMilliseconds() +
+      parseInt(
+        this.configService.getOrThrow<string>(
+          'JWT_ACCESS_TOKEN_EXPIRATION_MS',
+        ),
+      ),
+    );
+
+    const tokenPayload: TokenPayload = {
+      userId: user.id,
+      role: user.role,
+    };
+
+    const accessToken = this.jwtService.sign(tokenPayload, {
+      secret: this.configService.getOrThrow<string>('JWT_ACCESS_TOKEN_SECRET'),
+      expiresIn: `${this.configService.getOrThrow<string>(
+        'JWT_ACCESS_TOKEN_EXPIRATION_MS',
+      )}ms`,
+    });
+
+    response.cookie('Authentification', accessToken, {
+      httpOnly: true,
+      secure: this.configService.get('NODE_ENV') === 'production',
+      expires: expiresAccessToken,
+    });
+  }
+
   logout(response: Response) {
     response.clearCookie('Authentification');
     response.clearCookie('Refresh');
