@@ -77,7 +77,7 @@ export class BookService {
     book.author = createBookDto.author;
     book.description = createBookDto.description;
     book.publisher = createBookDto.publisher;
-    book.image_src = createBookDto.image_src;
+    book.imageSrc = createBookDto.imageSrc;
     book.price = createBookDto.price;
     book.isbn = createBookDto.isbn;
     book.categories = await this.categoryService.findAllByIds(
@@ -113,7 +113,7 @@ export class BookService {
     book.author = updateBookDto.author ?? book.author;
     book.description = updateBookDto.description ?? book.description;
     book.publisher = updateBookDto.publisher ?? book.publisher;
-    book.image_src = updateBookDto.image_src ?? book.image_src;
+    book.imageSrc = updateBookDto.imageSrc ?? book.imageSrc;
     book.price = updateBookDto.price ?? book.price;
     book.isbn = updateBookDto.isbn ?? book.isbn;
     book.categories = updateBookDto.categoryIds

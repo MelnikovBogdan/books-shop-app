@@ -133,13 +133,13 @@ export class AuthService {
   async verifyUserRefreshToken(refreshToken: string, userId: string) {
     const user = await this.userService.findOne(userId);
 
-    if (!user || !user.refresh_token) {
+    if (!user || !user.refreshToken) {
       throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
     }
 
     const isMatch = await this.cryptoService.compareHash(
       refreshToken,
-      user.refresh_token,
+      user.refreshToken,
     );
 
     if (!isMatch) {

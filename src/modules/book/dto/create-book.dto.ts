@@ -28,7 +28,7 @@ export class CreateBookDto {
   @IsOptional()
   @IsString()
   @MaxLength(500)
-  image_src?: string;
+  imageSrc?: string;
 
   @IsNumber()
   price: number;
