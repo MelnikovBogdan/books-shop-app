@@ -20,15 +20,15 @@ export class Category {
 
   @Exclude()
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @Exclude()
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 
   @Exclude()
   @DeleteDateColumn({ nullable: true })
-  deleted_at: Date;
+  deletedAt: Date;
 
   @ManyToMany(() => Book, (book) => book.categories)
   books: Book[];

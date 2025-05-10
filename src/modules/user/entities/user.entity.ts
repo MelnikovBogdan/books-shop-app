@@ -27,19 +27,19 @@ export class User {
   password: string;
 
   @Column({ type: 'varchar', length: 255 })
-  full_name: string;
+  fullName: string;
 
   @Exclude()
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @Exclude()
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 
   @Exclude()
   @Column({ type: 'varchar', nullable: true })
-  refresh_token: string | null;
+  refreshToken: string | null;
 
   @OneToOne(() => Cart, { cascade: true })
   @JoinColumn()

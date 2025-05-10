@@ -36,7 +36,7 @@ export class UserService {
     }
 
     if (data.fullName) {
-      user.full_name = data.fullName;
+      user.fullName = data.fullName;
     }
 
     if (data.password) {
@@ -44,7 +44,7 @@ export class UserService {
     }
 
     if (data.refreshToken) {
-      user.refresh_token = data.refreshToken;
+      user.refreshToken = data.refreshToken;
     }
 
     if (data.cart) {
@@ -80,8 +80,7 @@ export class UserService {
     user.password = await this.cryptoService.generateHash(
       createUserDto.password,
     );
-    user.full_name = createUserDto.fullName;
-    user.created_at = new Date();
+    user.fullName = createUserDto.fullName;
 
     return await this.userRepository.save(user);
   }

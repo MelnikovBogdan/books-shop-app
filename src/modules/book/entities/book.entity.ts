@@ -30,7 +30,7 @@ export class Book {
   publisher?: string;
 
   @Column({ type: 'varchar', nullable: true, length: 500 })
-  image_src?: string;
+  imageSrc?: string;
 
   @Column({ type: 'int' })
   price: number;
@@ -39,10 +39,10 @@ export class Book {
   isbn: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 
   @ManyToMany(() => Category, {
     cascade: true,

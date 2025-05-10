@@ -40,7 +40,7 @@ export class CategoryService {
   async findAll(search = ''): Promise<Category[]> {
     return await this.categoryRepository.find({
       order: {
-        created_at: 'desc',
+        createdAt: 'desc',
       },
       where: {
         name: ILike(`%${search}%`),
